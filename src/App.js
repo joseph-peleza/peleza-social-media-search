@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Button, DatePicker, version, message, Alert } from 'antd';
+import 'antd/dist/antd.css'; 
 
 function App() {
+  const [date, setDate] = useState(null);
+  const handleChange = value => {
+    message.info(`Selected Date: ${value ? value.format('YYYY-MM-DD') : 'None'}`);
+    message.info()
+    setDate(value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{width: 400, margin: '100px auto'}}>
+      <h1>Ant Design Version: {version} </h1>
+      <DatePicker onChange={handleChange} />
+      <Button type = "primary" style= {{marginLeft: 8}}>Does Nothing</Button>
+      <div>
+        {/* Selected Date: {date ? date.format('YYYY-MM-DD') : 'None'} */}
+        <Alert message="Selected Date " description={date ? date.format('YYYY-MM-DD') : 'None'} />
+      </div>
     </div>
   );
 }
