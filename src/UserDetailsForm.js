@@ -1,5 +1,21 @@
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Select, Upload, Button} from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+
+// const fileList = [
+//   {
+//       uid: '-1',
+//       name: 'xxx.png',
+//       status: 'done',
+//       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+//       thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+//   },
+//   // {
+//   //     uid: '-2',
+//   //     name: 'yyy.png',
+//   //     status: 'error',
+//   // },
+// ];
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -16,14 +32,23 @@ const tailLayout = {
   },
 };
 
-
 const UserDetailsForm = () => {
     const onSiteChange = (value) => {
+      // eslint-disable-next-line
       switch (value) {
-        case 'male':
+        case 'facebook':
           return;
   
-        case 'female':
+        case 'instagram':
+          return;
+
+        case 'linkedin':
+          return;
+  
+        case 'tiktok':
+          return;
+
+        case 'twitter':
           return;
   
         case 'other':
@@ -34,10 +59,11 @@ const UserDetailsForm = () => {
     };
 
     return (
+      <>
         <Form {...layout} name="control-ref" onFinish={onFinish}>
           <Form.Item
             name="name"
-            label="Name"
+            label="Name of Candidate:"
             rules={[
               {
                 required: true,
@@ -46,9 +72,10 @@ const UserDetailsForm = () => {
           >
             <Input />
           </Form.Item>
+
           <Form.Item
             name="site"
-            label="Site"
+            label="Social Media Site to Search:"
             rules={[
               {
                 required: true,
@@ -56,15 +83,38 @@ const UserDetailsForm = () => {
             ]}
           >
             <Select
-              placeholder="Select a option and change input text above"
+              placeholder="Select a social media site to find a candidate's profile..."
               onChange={onSiteChange}
               allowClear
             >
-              <Option value="male">Facebook</Option>
-              <Option value="female">Instagram</Option>
-              <Option value="other">LinkedIn</Option>
+              <Option value="facebook">Facebook</Option>
+              <Option value="instagram">Instagram</Option>
+              <Option value="linkedin">LinkedIn</Option>
+              <Option value="tiktok">TikTok</Option>
+              <Option value="twitter">Twitter</Option>
+              <Option value="other">Other</Option>
             </Select>
           </Form.Item>
+
+          <Form.Item
+            name="photo"
+            label="Please Provide a Candidate Image:"
+            rules={[
+              {
+                required: false,
+              },
+            ]}
+          >
+            <Upload
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                listType="picture"
+                // defaultFileList={[...fileList]}
+                status = 'done'
+            >
+                <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+          </Form.Item>
+
           <Form.Item
             noStyle
             shouldUpdate={(prevValues, currentValues) => prevValues.site !== currentValues.site}
@@ -87,16 +137,11 @@ const UserDetailsForm = () => {
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
-              Submit
+              Search
             </Button>
-            {/* <Button htmlType="button" onClick={onReset}>
-              Reset
-            </Button> */}
-            {/* <Button type="link" htmlType="button" onClick={onFill}>
-              Fill form
-            </Button> */}
           </Form.Item>
         </Form>
+      </>
       );
 }
 

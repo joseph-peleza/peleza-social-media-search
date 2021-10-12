@@ -12,6 +12,7 @@ import {
 import logo from './Assets/peleza_logo_white.png';
 import SearchDetails from './SearchDetails';
 
+
 const { Header, Sider, Content } = Layout;
 
 function App() {
@@ -20,19 +21,20 @@ function App() {
   const toggle = () => {
     setCollapsed(!collapsed);
   };
+
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <img src={logo} className="logo"  alt="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1" icon={<UserOutlined />}>
-            FaceBook Search
+            Social Media Search
           </Menu.Item>
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            Instagram Search
+            Google Search
           </Menu.Item>
           <Menu.Item key="3" icon={<UploadOutlined />}>
-            LinkedIn Search
+            Reports
           </Menu.Item>
         </Menu>
       </Sider>
@@ -51,9 +53,11 @@ function App() {
             minHeight: '100vh',
           }}
         >
-          <h1 style={{fontSize: "30px" }}>Welcome, To Peleza Social Media Search Tool:</h1>
+          <h1 style={{fontSize: "30px" }}>Welcome to Peleza Social Media Search Tool:</h1>
           <br/>
+
           <SearchDetails/>
+
         </Content>
       </Layout>
     </Layout>
