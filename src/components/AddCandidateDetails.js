@@ -1,7 +1,6 @@
 import React from 'react'
 import "antd/dist/antd.css";
-import "./App.css";
-import UserDetailsForm from './UserDetailsForm';
+import CandidateDetailsForm from './CandidateDetailsForm';
 
 
 const SearchDetails = () => {
@@ -9,7 +8,7 @@ const SearchDetails = () => {
         <div className="App">
             <h1>Please Enter the Name of the Candidate to Search!</h1>
             <br/>
-                <UserDetailsForm/>
+                <CandidateDetailsForm/>
             <br />
         </div>
     )
